@@ -22,9 +22,12 @@ return new class extends Migration
             $table->string('lincenca_so');
             $table->string('processador');
             $table->string('tamanho_disco');
-            $table->string('tamanho_memoria');
-            $table->string('quantidade_ram');
+            $table->string('memoria_ram');
+            $table->string('tipo_memoria');
             $table->string('placa_mae');
+            $table->string('teclado');
+            $table->string('mouse');
+            $table->string('estabilizador');
             $table->string('carrinho');
             $table->text('observacoes')->nullable();
             $table->timestamps();
