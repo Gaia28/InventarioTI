@@ -9,27 +9,34 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
+ public function up(): void
     {
         Schema::create('computadores', function (Blueprint $table) {
             $table->id();
-            $table->string('operador');
+
+            // === DADOS DE IDENTIFICAÇÃO E USO ===
+            $table->string('operador'); 
             $table->string('setor');
             $table->string('departamento');
-            $table->string('ip')->unique();
+            $table->string('ip')->unique(); 
             $table->string('tombamento')->unique();
+            
+            // === ESPECIFICAÇÕES TÉCNICAS ===
             $table->string('sistema_operacional');
-            $table->string('lincenca_so');
+            $table->string('licenca_so');
             $table->string('processador');
             $table->string('tamanho_disco');
             $table->string('memoria_ram');
             $table->string('tipo_memoria');
             $table->string('placa_mae');
+
+            // === PERIFÉRICOS E DETALHES ===
             $table->string('teclado');
             $table->string('mouse');
             $table->string('estabilizador');
             $table->string('carrinho');
-            $table->text('observacoes')->nullable();
+            $table->text('observacoes')->nullable(); 
+
             $table->timestamps();
         });
     }
@@ -40,5 +47,5 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('computadores');
-    }
+    }   
 };
