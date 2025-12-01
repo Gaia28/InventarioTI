@@ -4,10 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Computador extends Model
 {
     use HasFactory;
+    protected $table = 'computadores';
     protected $fillable = [
         'operador',
         'setor',
@@ -15,11 +17,14 @@ class Computador extends Model
         'ip',
         'tombamento',
         'sistema_operacional',
-        'lincenca_so',
+        'licenca_so',
         'processador',
         'tamanho_disco',
-        'tamanho_memoria',
-        'quantidade_ram',
+        'memoria_ram',
+        'tipo_memoria',
+        'teclado',
+        'mouse',
+        'estabilizador',
         'placa_mae',
         'carrinho',
         'observacoes',

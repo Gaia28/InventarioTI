@@ -8,6 +8,7 @@ Route::middleware('auth')->group(function () {
     Route::view('settings', 'settings')->name('settings');
     Route::get('usuarios', \App\Livewire\Usuarios\Index::class)->name('usuarios.index');
     Route::get('inventario', \App\Livewire\Inventario\Index::class)->name('inventario.index');
+    Route::get('inventario/create', \App\Livewire\Inventario\Create::class)->name('inventario.create');
 });
 
 Route::view('dashboard', 'dashboard')

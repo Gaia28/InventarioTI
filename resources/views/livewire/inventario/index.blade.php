@@ -15,7 +15,7 @@
         </div>
         
         {{-- BOTÃO DE NOVO CADASTRO (INATIVO) --}}
-        <a href="#" 
+        <a href="{{ route('inventario.create') }}" 
            class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-lg shadow-md transition duration-150 cursor-pointer" 
            title="Novo Cadastro - Link Inativo"
         >
@@ -28,10 +28,10 @@
         <table class="min-w-full divide-y divide-gray-200">
             <thead class="bg-gray-50">
                 <tr>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tombamento</th>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Usuário</th>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Setor/DPT</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nome</th>
                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">IP</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Usuario</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">setor/DPTO</th>
                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">SO / Processador</th>
                     <th class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Ações</th>
                 </tr>
@@ -41,16 +41,16 @@
                 {{-- Linha de Dados de Exemplo 1 --}}
                 <tr>
                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                        PAT-1001-PC
-                    </td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
-                        Maria da Silva
-                    </td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
-                        Vendas / Comercial
+                        PGM00
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
                         192.168.1.10
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
+                        Fulano de tal
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
+                        RH/Administrativo
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                         Win 10 Pro / Core i5
@@ -61,29 +61,6 @@
                     </td>
                 </tr>
 
-                {{-- Linha de Dados de Exemplo 2 --}}
-                <tr>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                        PAT-1002-PC
-                    </td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
-                        João Almeida
-                    </td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
-                        Suporte / TI
-                    </td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
-                        192.168.1.11
-                    </td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                        Ubuntu 22.04 / Core i7
-                    </td>
-                    <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium space-x-2">
-                        <a href="#" class="text-blue-600 hover:text-blue-900">Ver</a>
-                        <a href="#" class="text-indigo-600 hover:text-indigo-900 ml-4">Editar</a>
-                    </td>
-                </tr>
-                
                 {{-- Linha de Dados de Exemplo 3 --}}
                 <tr>
                     <td colspan="6" class="px-6 py-4 text-center text-sm text-gray-500 italic">
