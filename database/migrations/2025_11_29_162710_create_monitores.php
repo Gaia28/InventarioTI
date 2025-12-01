@@ -13,11 +13,14 @@ return new class extends Migration
     {
         Schema::create('monitores', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('computador_id')->constrained('computadores')->onDelete('cascade');
+            $table->foreignId('computador_id')
+                  ->constrained('computadores') 
+                  ->onDelete('cascade');
             $table->string('tombamento')->unique();
             $table->string('marca');
             $table->string('tamanho_tela');
             $table->string('tipo_conexao');
+            
             $table->timestamps();
         });
     }
