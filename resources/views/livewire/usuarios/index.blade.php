@@ -13,12 +13,12 @@
             >
         </div>
 
-        <a href="#" 
-           class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-lg shadow-md transition duration-150 opacity-90"
-           title="Novo Usuário (inativo)"
-        >
-            + Novo Usuário
-        </a>
+       <a href="{{ route('usuarios.create') }}"
+    class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-lg shadow-md transition duration-150 opacity-90"
+    title="Cadastrar novo usuário"
+>
+    + Novo Usuário
+</a>    
     </div>
 
     {{-- TABELA (ESTÁTICA) --}}
