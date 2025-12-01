@@ -9,6 +9,12 @@
         <a href="{{ route('dashboard') }}" class="flex items-center p-2 my-2 transition duration-300 rounded-lg hover:bg-gray-300
         {{ request()->routeIs('dashboard') ? 'bg-gray-200' : '' }}" wire:navigate>Dashboard</a>
 
+        <a href="{{ route('inventario.index') }}"
+           class="flex items-center p-2 my-2 transition duration-300 rounded-lg hover:bg-gray-300
+        {{ request()->routeIs('inventario.index') ? 'bg-gray-200' : '' }}" wire:navigate>
+            Computadores
+        </a>
+
         @if (Auth::user()->role === $roleAdmin)
             <a href="{{ route('usuarios.index') }}"
                class="flex items-center p-2 my-2 transition duration-300 rounded-lg hover:bg-gray-300
