@@ -6,10 +6,10 @@
         <div class="w-full md:w-1/3">
             <input 
                 type="text" 
+                wire:model.live="search"
                 placeholder="Buscar por nome, e-mail ou cargo..."
                 class="w-full px-4 py-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500"
-                value="Simulação de busca..."
-                disabled
+               
             >
         </div>
 
@@ -34,43 +34,17 @@
             </thead>
 
             <tbody class="bg-white divide-y divide-gray-200">
-                {{-- Exemplo 1 --}}
+               @foreach ($usuarios as $usuario)
                 <tr>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Matheus Gaia</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">matheus.gaia@example.com</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Admin</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium space-x-2">
-                        <a href="#" class="text-indigo-600 hover:text-indigo-900 mr-4">Editar</a>
-                        <button onclick="simulateReset('ana.beatriz@example.com')" class="text-red-600 hover:text-red-900">Redefinir senha</button>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ $usuario->name }}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ $usuario->email }}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ ucfirst($usuario->role) }}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-center">
+                        <a href="#" class="text-indigo-600 hover:text-indigo-900 font-semibold">Editar</a>
                     </td>
                 </tr>
-
-                {{-- Exemplo 2 --}}
-                <tr>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Fabio Feio</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">fabio.feio@example.com</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Usuário</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
-                        <a href="#" class="text-indigo-600 hover:text-indigo-900 mr-4">Editar</a>
-                        <button onclick="simulateReset('bruno.lima@example.com')" class="text-red-600 hover:text-red-900">Redefinir senha</button>
-                    </td>
-                </tr>
-
-                {{-- Exemplo 3 --}}
-                <tr>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Rafael Lopes</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">rafael.lopes@example.com</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Admin</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
-                        <a href="#" class="text-indigo-600 hover:text-indigo-900 mr-4">Editar</a>
-                        <button onclick="simulateReset('carla.souza@example.com')" class="text-red-600 hover:text-red-900">Redefinir senha</button>
-                    </td>
-                </tr>
-
-                {{-- Linha placeholder p/ demonstrar mais registros --}}
-                <tr>
-                    <td colspan="4" class="px-6 py-4 text-center text-sm text-gray-500 italic">... o resto dos registros ...</td>
-                </tr>
+               
+               @endforeach
             </tbody>
         </table>
     </div>
