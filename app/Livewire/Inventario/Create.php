@@ -12,6 +12,7 @@ class Create extends Component
     public $monitores = [];
     public $tombamento;
     public $ip;
+    public $nome_maquina;
     public $nome_usuario;
     public $setor;
     public $departamento;
@@ -61,6 +62,7 @@ class Create extends Component
         $computador = Computador::create([
                 'tombamento' => $this->tombamento,
                 'ip' => $this->ip,
+                'nome_maquina' => $this->nome_maquina,
                 'operador' => $this->nome_usuario,
                 'setor' => $this->setor,
                 'departamento' => $this->departamento,
