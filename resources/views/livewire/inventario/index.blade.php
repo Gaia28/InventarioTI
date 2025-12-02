@@ -39,34 +39,23 @@
             <tbody class="bg-white divide-y divide-gray-200">
                 
                 {{-- Linha de Dados de Exemplo 1 --}}
+               @foreach ($this->computadores as $computador)
                 <tr>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                        PGM00
-                    </td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
-                        192.168.1.10
-                    </td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
-                        Fulano de tal
-                    </td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
-                        RH/Administrativo
-                    </td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                        Win 10 Pro / Core i5
-                    </td>
-                    <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium space-x-2">
-                        <a href="#" class="text-blue-600 hover:text-blue-900">Ver</a>
-                        <a href="#" class="text-indigo-600 hover:text-indigo-900 ml-4">Editar</a>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ $computador->nome_maquina }}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ $computador->ip }}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ $computador->operador }}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ $computador->setor }} / {{ $computador->departamento }}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ $computador->sistema_operacional }} / {{ $computador->processador }}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
+                        <a href="{{ route('inventario.show', $computador->id) }}" 
+                           class="text-indigo-600 hover:text-indigo-900 font-semibold">
+                            Detalhes
+                        </a>
+                        <a href="">edit</a>
                     </td>
                 </tr>
-
-                {{-- Linha de Dados de Exemplo 3 --}}
-                <tr>
-                    <td colspan="6" class="px-6 py-4 text-center text-sm text-gray-500 italic">
-                        ... Mais linhas de inventário iriam aqui ...
-                    </td>
-                </tr>
+               
+               @endforeach
 
             </tbody>
         </table>
