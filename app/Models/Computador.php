@@ -16,6 +16,7 @@ class Computador extends Model
         'departamento',
         'ip',
         'tombamento',
+        'nome_maquina',
         'sistema_operacional',
         'licenca_so',
         'processador',
