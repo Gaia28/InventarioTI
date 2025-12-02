@@ -22,11 +22,12 @@
             <div class="flex-grow flex flex-col">
 
             <!-- Page Content --> 
-            <main class="flex-grow">
+            <main class="min-h-screen md:ml-64 p-6">
                 {{ $slot }}
             </main>
            </div>
         </div>
         @livewireScripts
+        <script src="https://unpkg.com/alpinejs" defer></script>
     </body>
 </html>
