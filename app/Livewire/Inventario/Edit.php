@@ -17,8 +17,7 @@ class Edit extends Component
     public $ip;
     public $nome_maquina;
     public $nome_usuario;
-    public $setor;
-    public $departamento;
+    
     public $processador;
     public $placa_mae;
     public $tamanho_disco;
@@ -39,8 +38,6 @@ class Edit extends Component
         $this->ip = $this->computador->ip;
         $this->nome_maquina = $this->computador->nome_maquina;
         $this->nome_usuario = $this->computador->operador;
-        $this->setor = $this->computador->setor;
-        $this->departamento = $this->computador->departamento;
         $this->processador = $this->computador->processador;
         $this->placa_mae = $this->computador->placa_mae;
         $this->tamanho_disco = $this->computador->tamanho_disco;
@@ -79,9 +76,7 @@ class Edit extends Component
             'tombamento' => $this->tombamento,
             'ip' => $this->ip,
             'nome_maquina' => $this->nome_maquina,
-            'nome_usuario' => $this->nome_usuario,
-            'setor' => $this->setor,
-            'departamento' => $this->departamento,
+            'operador' => $this->nome_usuario,
             'processador' => $this->processador,
             'placa_mae' => $this->placa_mae,
             'tamanho_disco' => $this->tamanho_disco,
@@ -94,7 +89,6 @@ class Edit extends Component
             'estabilizador' => $this->estabilizador,
             'carrinho' => $this->carrinho,
             'observacoes' => $this->observacoes,
-            'quantidade_telas' => count($this->monitores), 
         ]);
 
         foreach ($this->monitores as $monitorData) {

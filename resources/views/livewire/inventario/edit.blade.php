@@ -35,21 +35,7 @@
                     <input type="text" id="nome_usuario" wire:model="nome_usuario" 
                         class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-indigo-500 focus:border-indigo-500">
                 </div>
-
-
-                {{-- Setor --}}
-                <div>
-                    <label for="setor" class="block text-sm font-medium text-gray-700">Setor*</label>
-                    <input type="text" id="setor" wire:model="setor"
-                        class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-indigo-500 focus:border-indigo-500">
-                </div>
-
-                {{-- Departamento --}}
-                <div>
-                    <label for="departamento" class="block text-sm font-medium text-gray-700">Departamento (DPT)</label>
-                    <input type="text" id="departamento" wire:model="departamento"
-                        class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-indigo-500 focus:border-indigo-500">
-                </div>
+                {{-- Setor e Departamento agora são derivados do Usuário selecionado --}}
             </div>
         </div>
 

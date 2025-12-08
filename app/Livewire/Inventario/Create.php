@@ -3,6 +3,7 @@
 namespace App\Livewire\Inventario;
 
 use App\Models\Computador;
+use App\Models\Usuario;
 use Livewire\Component;
 use Livewire\Attributes\Layout;
 class Create extends Component
@@ -13,9 +14,12 @@ class Create extends Component
     public $tombamento;
     public $ip;
     public $nome_maquina;
-    public $nome_usuario;
-    public $setor;
-    public $departamento;
+    public $usuario_id;
+    public $creatingUsuario = false;
+    public $novo_usuario_nome;
+    public $novo_usuario_setor;
+    public $novo_usuario_departamento;
+    
     public $processador;
     public $placa_mae;
     public $tamanho_disco;
@@ -59,13 +63,37 @@ class Create extends Component
     }
 
     public function save(){
+        $rules = [
+            'tombamento' => 'required|unique:computadores,tombamento',
+        ];
+
+        if ($this->creatingUsuario) {
+            $rules['novo_usuario_nome'] = 'required|string|max:255';
+            $rules['novo_usuario_setor'] = 'required|string|max:255';
+            $rules['novo_usuario_departamento'] = 'required|string|max:255';
+        } else {
+            $rules['usuario_id'] = 'required|exists:usuarios,id';
+        }
+
+        $this->validate($rules);
+
+        if ($this->creatingUsuario) {
+            $usuario = Usuario::create([
+                'nome' => $this->novo_usuario_nome,
+                'setor' => $this->novo_usuario_setor,
+                'departamento' => $this->novo_usuario_departamento,
+            ]);
+            $this->usuario_id = $usuario->id;
+        }
+
+        $usuario = $this->usuario_id ? Usuario::find($this->usuario_id) : null;
+
         $computador = Computador::create([
                 'tombamento' => $this->tombamento,
                 'ip' => $this->ip,
                 'nome_maquina' => $this->nome_maquina,
-                'operador' => $this->nome_usuario,
-                'setor' => $this->setor,
-                'departamento' => $this->departamento,
+                'operador' => $usuario ? $usuario->nome : null,
+                'usuario_id' => $this->usuario_id,
                 'processador' => $this->processador,
                 'placa_mae' => $this->placa_mae,
                 'tamanho_disco' => $this->tamanho_disco,
@@ -83,17 +111,18 @@ class Create extends Component
                 return [
                     'tombamento' => $monitor['tombamento'],
                     'marca' => $monitor['marca'],
-                    'tamanho_tela' => $monitor['tamanho_tela'], // Campo correto
+                    'tamanho_tela' => $monitor['tamanho_tela'],
                     'tipo_conexao' => $monitor['tipo_conexao'],
                 ];
             })->all();
             
-            // O createMany só funciona se o relacionamento "monitores()" estiver correto no model Computador
             $computador->monitores()->createMany($monitorsToCreate); 
 
     }
     public function render()
     {
-        return view('livewire.inventario.create');
+        return view('livewire.inventario.create', [
+            'usuarios' => Usuario::orderBy('nome')->get(),
+        ]);
     }
 }

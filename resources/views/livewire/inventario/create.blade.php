@@ -31,25 +31,51 @@
 
                 {{-- Nome do Usuário --}}
                 <div>
-                    <label for="nome_usuario" class="block text-sm font-medium text-gray-700">Nome do Usuário *</label>
-                    <input type="text" id="nome_usuario" wire:model="nome_usuario" 
-                        class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-indigo-500 focus:border-indigo-500">
+                    <label for="usuario_id" class="block text-sm font-medium text-gray-700">Usuário *</label>
+                    <div class="flex gap-2">
+                        <select id="usuario_id" wire:model="usuario_id"
+                            class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-indigo-500 focus:border-indigo-500">
+                            <option value="">-- Selecionar Usuário --</option>
+                            @foreach($usuarios as $usuario)
+                                <option value="{{ $usuario->id }}">{{ $usuario->nome }}@if($usuario->setor) - {{ $usuario->setor }}@endif</option>
+                            @endforeach
+                        </select>
+
+                        <button type="button" wire:click="$toggle('creatingUsuario')"
+                            class="mt-1 inline-flex items-center px-3 py-2 bg-gray-100 border border-gray-300 rounded-md hover:bg-gray-200">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" />
+                            </svg>
+                            Novo
+                        </button>
+                    </div>
+
+                    @if($creatingUsuario)
+                        <div class="mt-3 grid grid-cols-1 md:grid-cols-3 gap-3 bg-gray-50 p-3 rounded">
+                            <div>
+                                <label for="novo_usuario_nome" class="block text-sm font-medium text-gray-700">Nome</label>
+                                <input type="text" id="novo_usuario_nome" wire:model="novo_usuario_nome"
+                                    class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-indigo-500 focus:border-indigo-500">
+                                @error('novo_usuario_nome') <p class="text-red-500 text-xs mt-1">{{ $message }}</p> @enderror
+                            </div>
+                            <div>
+                                <label for="novo_usuario_setor" class="block text-sm font-medium text-gray-700">Setor</label>
+                                <input type="text" id="novo_usuario_setor" wire:model="novo_usuario_setor"
+                                    class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-indigo-500 focus:border-indigo-500">
+                                @error('novo_usuario_setor') <p class="text-red-500 text-xs mt-1">{{ $message }}</p> @enderror
+                            </div>
+                            <div>
+                                <label for="novo_usuario_departamento" class="block text-sm font-medium text-gray-700">Departamento</label>
+                                <input type="text" id="novo_usuario_departamento" wire:model="novo_usuario_departamento"
+                                    class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-indigo-500 focus:border-indigo-500">
+                                @error('novo_usuario_departamento') <p class="text-red-500 text-xs mt-1">{{ $message }}</p> @enderror
+                            </div>
+                        </div>
+                    @endif
                 </div>
 
 
-                {{-- Setor --}}
-                <div>
-                    <label for="setor" class="block text-sm font-medium text-gray-700">Setor*</label>
-                    <input type="text" id="setor" wire:model="setor"
-                        class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-indigo-500 focus:border-indigo-500">
-                </div>
-
-                {{-- Departamento --}}
-                <div>
-                    <label for="departamento" class="block text-sm font-medium text-gray-700">Departamento (DPT)</label>
-                    <input type="text" id="departamento" wire:model="departamento"
-                        class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-indigo-500 focus:border-indigo-500">
-                </div>
+                {{-- Setor e Departamento agora são derivados do Usuário selecionado --}}
             </div>
         </div>
 
