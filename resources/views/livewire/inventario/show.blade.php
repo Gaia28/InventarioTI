@@ -42,11 +42,11 @@
                     </div>
                     <div>
                         <p class="text-sm font-medium text-gray-500">Setor:</p>
-                        <p class="text-lg text-gray-900">{{ $computador->setor ?? 'N/A' }}</p>
+                        <p class="text-lg text-gray-900">{{ $computador->usuario->setor ?? 'N/A' }}</p>
                     </div>
                     <div>
                         <p class="text-sm font-medium text-gray-500">Departamento (DPT):</p>
-                        <p class="text-lg text-gray-900">{{ $computador->departamento ?? 'N/A' }}</p>
+                        <p class="text-lg text-gray-900">{{ $computador->usuario->departamento ?? 'N/A' }}</p>
                     </div>
                 </div>
             </div>
