@@ -5,6 +5,7 @@ namespace App\Livewire\Inventario;
 use App\Models\Computador;
 use Livewire\Component;
 use App\Models\Monitor;
+use App\Models\Usuario;
 use Livewire\Attributes\Layout;
 
 class Edit extends Component
@@ -17,6 +18,11 @@ class Edit extends Component
     public $ip;
     public $nome_maquina;
     public $nome_usuario;
+
+    public $creatingUsuario = false;
+    public $novo_usuario_nome;
+    public $novo_usuario_setor;
+    public $novo_usuario_departamento;
     
     public $processador;
     public $placa_mae;
@@ -112,6 +118,8 @@ class Edit extends Component
     }
     public function render()
     {
-        return view('livewire.inventario.edit');
+        return view('livewire.inventario.edit',
+    [            'usuarios' => Usuario::orderBy('nome')->get(),
+]);
     }
 }

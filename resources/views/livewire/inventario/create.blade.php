@@ -1,5 +1,4 @@
 <div class="p-6">
-    <h2 class="text-3xl font-bold mb-6 text-gray-800">Novo Cadastro de Computador</h2>
 
     <form wire:submit.prevent="save" class="space-y-8">
 
