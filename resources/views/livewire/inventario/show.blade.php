@@ -1,9 +1,6 @@
 <div class="p-6">
     <div class="flex justify-between items-center mb-6 border-b pb-4">
-        <h2 class="text-3xl font-bold text-gray-800">
-            Detalhes Completos: {{ $computador->tombamento }}
-        </h2>
-        
+
         {{-- Botões de Ação --}}
         <div>
             <a href="#" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-lg text-sm mr-2 shadow-md">
@@ -136,7 +133,7 @@
 
         {{-- 4. OBSERVAÇÕES --}}
         <div class="border-t border-gray-200 pt-4">
-            <h3 class="text-lg font-medium mb-2 text-gray-700">📄 Observações Gerais</h3>
+            <h3 class="text-lg font-medium mb-2 text-gray-700">Observações Gerais</h3>
             <div class="bg-gray-50 p-4 rounded-md">
                 <p class="text-gray-700 whitespace-pre-line leading-relaxed">{{ $computador->observacoes ?? 'Nenhuma observação registrada.' }}</p>
             </div>

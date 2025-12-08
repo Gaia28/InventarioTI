@@ -75,8 +75,6 @@ class Edit extends Component
 
     public function update()
     {
-
-        // 1. Atualiza o Computador (Dados Principais)
         $this->computador->update([
             'tombamento' => $this->tombamento,
             'ip' => $this->ip,
@@ -96,14 +94,11 @@ class Edit extends Component
             'estabilizador' => $this->estabilizador,
             'carrinho' => $this->carrinho,
             'observacoes' => $this->observacoes,
-            // Atualize também o campo quantidade_telas
             'quantidade_telas' => count($this->monitores), 
         ]);
 
-        // 2. Sincroniza os Monitores
         foreach ($this->monitores as $monitorData) {
             
-            // Mapeia os campos da View para a Model Monitor
             $dataToSave = [
                 'tombamento' => $monitorData['tombamento'],
                 'marca' => $monitorData['marca'],
@@ -112,17 +107,13 @@ class Edit extends Component
             ];
 
             if (isset($monitorData['id']) && $monitorData['id']) {
-                // Se existe, atualiza
                 Monitor::where('id', $monitorData['id'])->update($dataToSave);
             } else {
-                // Se é novo, cria associado ao computador atual
                 $this->computador->monitores()->create($dataToSave);
             }
         }
 
         session()->flash('success', 'O computador ' . $this->tombamento . ' foi atualizado com sucesso!');
-
-        // Redireciona para a tela de visualização (Show)
         return $this->redirect(route('inventario.show', $this->computador), navigate: true);
     }
     public function render()

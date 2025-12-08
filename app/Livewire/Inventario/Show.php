@@ -1,6 +1,4 @@
 <?php
-// app/Livewire/Computador/Show.php
-
 namespace App\Livewire\Inventario;
 
 use App\Models\Computador;
