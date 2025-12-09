@@ -14,6 +14,7 @@ class Create extends Component
     public $tombamento;
     public $ip;
     public $nome_maquina;
+    public $lotacao;
     public $usuario_id;
     public $creatingUsuario = false;
     public $novo_usuario_nome;
@@ -92,6 +93,7 @@ class Create extends Component
                 'tombamento' => $this->tombamento,
                 'ip' => $this->ip,
                 'nome_maquina' => $this->nome_maquina,
+                'lotacao' => $this->lotacao,
                 'operador' => $usuario ? $usuario->nome : null,
                 'usuario_id' => $this->usuario_id,
                 'processador' => $this->processador,
