@@ -31,6 +31,10 @@
                 <p class="text-sm font-medium text-gray-500">Chassi/Carrinho:</p>
                 <p class="text-lg text-gray-900">{{ $computador->carrinho ?? 'N/A' }}</p>
             </div>
+            <div>
+                <p class="text-sm font-medium text-gray-500">Lotação</p>
+                <p class="text-lg text-gray-900">{{ $computador->lotacao ?? 'N/A' }}</p>
+            </div>
 
             {{-- 2. DADOS DO USUÁRIO --}}
             <div class="lg:col-span-3 border-t border-gray-200 pt-4">
