@@ -13,8 +13,11 @@ class Index extends Component
 
     public function getUsuariosProperty()
     {
-        return User::where('name', 'like', '%' . $this->search . '%')
-            ->orWhere('email', 'like', '%' . $this->search . '%')
+        return User::with(['setor', 'departamento'])
+            ->where(function ($q) {
+                $q->where('name', 'like', '%' . $this->search . '%')
+                  ->orWhere('email', 'like', '%' . $this->search . '%');
+            })
             ->orderBy('name')
             ->get();
     }
