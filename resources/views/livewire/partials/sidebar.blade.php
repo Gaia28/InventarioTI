@@ -15,14 +15,12 @@
             Computadores
         </a>
 
-        @if (Auth::user()->role === $roleAdmin)
             <a href="{{ route('usuarios.index') }}"
                class="flex items-center p-2 my-2 transition duration-300 rounded-lg hover:bg-gray-300
         {{ request()->routeIs('usuarios.index') ? 'bg-gray-200' : '' }}"wire:navigate>
                 Usuários
             </a>
 
-        @endif
     </nav>
     <div class="pt-4 pb-1 border-t border-gray-200 dark:border-gray-600">
         <div class="px-4">

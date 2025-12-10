@@ -7,7 +7,6 @@ use Livewire\Component;
 
 class Sidebar extends Component
 {
-    public $roleAdmin = 'administrator';
 
     public function logout(Logout $logout){
         $logout();
