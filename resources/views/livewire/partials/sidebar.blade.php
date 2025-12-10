@@ -36,8 +36,7 @@
         </svg>
       </button>
     </div>
-
-     <nav class="flex-grow px-2 py-4 space-y-2">
+    <nav class="flex-grow px-2 py-4 space-y-2">
       <a href="{{ route('dashboard') }}"
          @click="open = false"
          class="block w-full rounded-lg px-3 py-2 text-sm font-medium transition hover:bg-gray-300
@@ -54,15 +53,12 @@
         Computadores
       </a>
 
-      @if (Auth::user()->role === 'administrator')
-        <a href="{{ route('usuarios.index') }}"
-           @click="open = false"
-           class="block w-full rounded-lg px-3 py-2 text-sm font-medium transition hover:bg-gray-300
-                  {{ request()->routeIs('usuarios.index') ? 'bg-gray-200' : '' }}"
-           wire:navigate>
-          Usuários
-        </a>
-      @endif
+            <a href="{{ route('usuarios.index') }}"
+               class="flex items-center p-2 my-2 transition duration-300 rounded-lg hover:bg-gray-300
+        {{ request()->routeIs('usuarios.index') ? 'bg-gray-200' : '' }}"wire:navigate>
+                Usuários
+            </a>
+
     </nav>
 
     <div class="pt-4 pb-1 border-t border-gray-200 px-2">

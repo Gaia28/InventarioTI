@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Usuarios;
 
+use App\Models\UnidadeOrganizacional;
 use Livewire\Component;
 use Livewire\Attributes\Layout;
 use App\Models\User;
@@ -16,7 +17,10 @@ class Create extends Component
 
     public $name = '';
     public $email = '';
-    public $cargo = 'user';
+    public $setor_id;
+    public $departamento_id;
+    public $setores = [];
+    public $departamentos = [];
     public $sendReset = true;
 
     // props para mensagens (nova abordagem)
@@ -26,13 +30,14 @@ class Create extends Component
     protected $rules = [
         'name' => 'required|string|max:255',
         'email' => 'required|email|unique:users,email',
-        'cargo' => 'required|in:admin,user',
         'sendReset' => 'boolean',
     ];
 
     public function mount()
     {
         $this->sendReset = true;
+        $this->setores = UnidadeOrganizacional::where('tipo', 'setor')->orderBy('nome')->get();
+        $this->departamentos = UnidadeOrganizacional::where('tipo', 'departamento')->orderBy('nome')->get();
     }
 
     public function save()
@@ -45,7 +50,8 @@ class Create extends Component
             $user = User::create([
                 'name' => $this->name,
                 'email' => $this->email,
-                'cargo' => $this->cargo,
+                'setor_id' => $this->setor_id,
+                'departamento_id' => $this->departamento_id,
                 'password' => Hash::make($randomPassword),
             ]);
         } catch (\Exception $e) {
@@ -72,7 +78,7 @@ class Create extends Component
         }
 
         // limpa o formulário (mas mantém sendReset true)
-        $this->reset(['name', 'email', 'cargo']);
+        $this->reset(['name', 'email', 'setor_id', 'departamento_id']);
         $this->sendReset = true;
     }
 
