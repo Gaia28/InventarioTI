@@ -38,6 +38,29 @@
                     </select>
                     @error('cargo') <span class="text-sm text-red-600">{{ $message }}</span> @enderror
                 </div>
+
+                <div>
+                    <label for="setor_id" class="block text-sm font-medium text-gray-700">Setor *</label>
+                    <select id="setor_id" wire:model.defer="setor_id"
+                        class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-indigo-500 focus:border-indigo-500">
+                        <option value="">Selecione um cargo</option>
+                        @foreach($setores as $setor)
+                            <option value="{{ $setor->id }}">{{ $setor->nome }}</option>
+                        @endforeach
+                    </select>
+                    @error('cargo') <span class="text-sm text-red-600">{{ $message }}</span> @enderror
+                </div>
+                <div>
+                    <label for="departamento_id" class="block text-sm font-medium text-gray-700">Departamento *</label>
+                    <select id="departamento_id" wire:model.defer="departamento_id"
+                        class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-indigo-500 focus:border-indigo-500">
+                        <option value="">Selecione um cargo</option>
+                        @foreach($departamentos as $departamento)
+                            <option value="{{ $departamento->id }}">{{ $departamento->nome }}</option>
+                        @endforeach
+                    </select>
+                    @error('cargo') <span class="text-sm text-red-600">{{ $message }}</span> @enderror
+                </div>
             </div>
         </div>
 
