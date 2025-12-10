@@ -28,7 +28,7 @@ return new class extends Migration
             $table->string('tamanho_disco');
             $table->string('memoria_ram');
             $table->string('tipo_memoria');
-            $table->string('placa_mae');
+            $table->string('placa_mae')->nullable();
 
             // === PERIFÉRICOS E DETALHES ===
             $table->string('teclado');

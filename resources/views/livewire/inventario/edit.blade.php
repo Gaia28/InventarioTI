@@ -1,6 +1,6 @@
 <div class="p-6">
 
-    <form wire:submit.prevent="save" class="space-y-8">
+    <form wire:submit.prevent="update" class="space-y-8">
 
         {{-- SEÇÃO 1: INFORMAÇÕES DE USO E IDENTIFICAÇÃO --}}
         <div class="bg-white shadow-xl rounded-lg p-6">
@@ -26,25 +26,6 @@
                     <label for="nome_maquina" class="block text-sm font-medium text-gray-700">Nome da Máquina *</label>
                     <input type="text" id="nome_maquina" wire:model="nome_maquina" 
                         class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-indigo-500 focus:border-indigo-500">
-                </div>
-                <div>
-                    <label for="lotacao" class="block text-sm font-medium text-gray-700">Lotação *</label>
-                    <select id="lotacao" wire:model="lotacao" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-indigo-500 focus:border-indigo-500">
-                        <option value="">-- Selecionar --</option>
-                        <option value="proc_adm">Proc. ADM</option>
-                        <option value="proc_civel">Proc. Cível</option>
-                        <option value="TI">TI</option>
-                        <option value="proc_fiscall">Proc. Fiscal</option>
-                        <option value="proc_trab">Proc. Trab</option>
-                        <option value="gabinete">Gabinete</option>
-                        <option value="pga">PGA</option>
-                        <option value="div_adm">Div. ADM</option>
-                        <option value="corregedoria">Corregedoria</option>
-                        <option value="protesto">Protesto</option>
-                        <option value="ncdp">NCDP</option>
-                        <option value="pgm">PGM</option>
-                        <option value="protocolo">Protocolo</option>
-                    </select>
                 </div>
 
                 {{-- Nome do Usuário --}}
