@@ -17,7 +17,6 @@ class Create extends Component
 
     public $name = '';
     public $email = '';
-    public $cargo = 'user';
     public $setor_id;
     public $departamento_id;
     public $setores = [];
@@ -31,7 +30,6 @@ class Create extends Component
     protected $rules = [
         'name' => 'required|string|max:255',
         'email' => 'required|email|unique:users,email',
-        'cargo' => 'required|in:admin,user',
         'sendReset' => 'boolean',
     ];
 
@@ -52,7 +50,6 @@ class Create extends Component
             $user = User::create([
                 'name' => $this->name,
                 'email' => $this->email,
-                'cargo' => $this->cargo,
                 'setor_id' => $this->setor_id,
                 'departamento_id' => $this->departamento_id,
                 'password' => Hash::make($randomPassword),
@@ -81,7 +78,7 @@ class Create extends Component
         }
 
         // limpa o formulário (mas mantém sendReset true)
-        $this->reset(['name', 'email', 'cargo']);
+        $this->reset(['name', 'email', 'setor_id', 'departamento_id']);
         $this->sendReset = true;
     }
 

@@ -28,7 +28,7 @@
                 <tr>
                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nome</th>
                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Cargo</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Setor/DPTO</th>
                     <th class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Ações</th>
                 </tr>
             </thead>
@@ -38,7 +38,7 @@
                 <tr>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ $usuario->name }}</td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ $usuario->email }}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ ucfirst($usuario->role) }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ $usuario->setor->nome ?? 'N/A' }} / {{ $usuario->departamento->nome ?? 'N/A' }}</td>
                     <td class="px-6 py-4 whitespace-nowrap text-center">
                         <a href="#" class="text-indigo-600 hover:text-indigo-900 font-semibold">Editar</a>
                     </td>
@@ -51,7 +51,7 @@
 
     {{-- PAGINAÇÃO (ESTÁTICA) --}}
     <div class="mt-4 flex justify-between items-center">
-        <div class="text-sm text-gray-600">Exibindo 1 a 10 de 42 resultados</div>
+        <div class="text-sm text-gray-600">Exibindo {{ count($usuarios) }}</div>
 
         <div class="flex space-x-1">
             <a href="#" class="px-3 py-1 text-sm text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100">Anterior</a>
