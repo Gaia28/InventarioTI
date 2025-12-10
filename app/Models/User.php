@@ -21,7 +21,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'role',
+        'setor_id',
+        'departamento_id',
     ];
 
     /**
@@ -46,4 +47,14 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+    public function setor()
+    {
+        return $this->belongsTo(UnidadeOrganizacional::class, 'setor_id');
+    }
+    public function departamento()
+    {
+        return $this->belongsTo(UnidadeOrganizacional::class, 'departamento_id');
+    }
+
+
 }
