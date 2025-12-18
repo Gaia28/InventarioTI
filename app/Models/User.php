@@ -55,6 +55,10 @@ class User extends Authenticatable
     {
         return $this->belongsTo(UnidadeOrganizacional::class, 'departamento_id');
     }
+    public function computador(): HasOne
+    {
+        return $this->hasOne(Computador::class);
+    }
 
 
 }

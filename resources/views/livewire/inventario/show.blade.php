@@ -1,27 +1,31 @@
 <div class="p-6">
     <div class="flex justify-between items-center mb-6 border-b pb-4">
 
-        {{-- Botões de Ação --}}
-        <div>
+        
+    </div>
+
+    <div class="bg-white shadow-xl rounded-lg p-6 space-y-8">
+        
+        <div class="flex justify-between items-center mb-6 border-b pb-4">
+             <h3 class="text-xl font-semibold  text-indigo-700">Informações Detalhadas do Equipamento</h3>
+            <div>
             <a href="#" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-lg text-sm mr-2 shadow-md">
                 Editar Cadastro
             </a>
             <a href="{{ route('inventario.index') }}" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-lg text-sm shadow-md">
                 Voltar à Lista
             </a>
+            </div>
+       
+        
         </div>
-    </div>
-
-    <div class="bg-white shadow-xl rounded-lg p-6 space-y-8">
-
-        <h3 class="text-xl font-semibold mb-4 border-b pb-2 text-indigo-700">Informações Detalhadas do Equipamento</h3>
         
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-6 gap-x-8">
 
             {{-- 1. IDENTIFICAÇÃO E IP --}}
             <div>
                 <p class="text-sm font-medium text-gray-500">Tombamento:</p>
-                <p class="text-lg font-semibold text-gray-900">{{ $computador->tombamento }}</p>
+                <p class="text-lg text-gray-900">{{ $computador->tombamento }}</p>
             </div>
             <div>
                 <p class="text-sm font-medium text-gray-500">Endereço IP:</p>
@@ -42,15 +46,15 @@
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-x-8">
                     <div>
                         <p class="text-sm font-medium text-gray-500">Usuário:</p>
-                        <p class="text-lg text-gray-900 font-semibold">{{ $computador->operador }}</p>
+                        <p class="text-lg text-gray-900 ">{{ $computador->usuario?->name ??'N/A'}}</p>
                     </div>
                     <div>
                         <p class="text-sm font-medium text-gray-500">Setor:</p>
-                        <p class="text-lg text-gray-900">{{ $computador->usuario->setor ?? 'N/A' }}</p>
+                        <p class="text-lg text-gray-900">{{ $computador->usuario?->setor?->nome ?? 'N/A' }}</p>
                     </div>
                     <div>
                         <p class="text-sm font-medium text-gray-500">Departamento (DPT):</p>
-                        <p class="text-lg text-gray-900">{{ $computador->usuario->departamento ?? 'N/A' }}</p>
+                        <p class="text-lg text-gray-900">{{ $computador->usuario->departamento->nome ?? 'N/A' }}</p>
                     </div>
                 </div>
             </div>
@@ -128,7 +132,7 @@
                     {{-- Qtd. Telas --}}
                     <div>
                         <p class="text-sm font-medium text-gray-500">Telas Cadastradas:</p>
-                        <p class="text-lg text-gray-900 font-semibold">{{ $computador->monitores->count() }}</p>
+                        <p class="text-lg text-gray-900">{{ $computador->monitores->count() }}</p>
                     </div>
                 </div>
             </div>
