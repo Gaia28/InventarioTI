@@ -3,7 +3,7 @@
 namespace App\Livewire\Inventario;
 
 use App\Models\Computador;
-use App\Models\Usuario;
+use App\Models\User;
 use Livewire\Component;
 use Livewire\Attributes\Layout;
 class Create extends Component
@@ -68,33 +68,14 @@ class Create extends Component
             'tombamento' => 'required|unique:computadores,tombamento',
         ];
 
-        if ($this->creatingUsuario) {
-            $rules['novo_usuario_nome'] = 'required|string|max:255';
-            $rules['novo_usuario_setor'] = 'required|string|max:255';
-            $rules['novo_usuario_departamento'] = 'required|string|max:255';
-        } else {
-            $rules['usuario_id'] = 'required|exists:usuarios,id';
-        }
-
         $this->validate($rules);
-
-        if ($this->creatingUsuario) {
-            $usuario = Usuario::create([
-                'nome' => $this->novo_usuario_nome,
-                'setor' => $this->novo_usuario_setor,
-                'departamento' => $this->novo_usuario_departamento,
-            ]);
-            $this->usuario_id = $usuario->id;
-        }
-
-        $usuario = $this->usuario_id ? Usuario::find($this->usuario_id) : null;
 
         $computador = Computador::create([
                 'tombamento' => $this->tombamento,
                 'ip' => $this->ip,
                 'nome_maquina' => $this->nome_maquina,
                 'lotacao' => $this->lotacao,
-                'operador' => $usuario ? $usuario->nome : null,
+                'operador' => $this->usuario_id ?: '',
                 'usuario_id' => $this->usuario_id,
                 'processador' => $this->processador,
                 'placa_mae' => $this->placa_mae,
@@ -124,7 +105,7 @@ class Create extends Component
     public function render()
     {
         return view('livewire.inventario.create', [
-            'usuarios' => Usuario::orderBy('nome')->get(),
+            'usuarios' => User::orderBy('name')->get(),
         ]);
     }
 }
