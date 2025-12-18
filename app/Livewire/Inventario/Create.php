@@ -68,24 +68,14 @@ class Create extends Component
             'tombamento' => 'required|unique:computadores,tombamento',
         ];
 
-        if ($this->creatingUsuario) {
-            $rules['novo_usuario_nome'] = 'required|string|max:255';
-            $rules['novo_usuario_setor'] = 'required|string|max:255';
-            $rules['novo_usuario_departamento'] = 'required|string|max:255';
-        } else {
-            $rules['usuario_id'] = 'required|exists:usuarios,id';
-        }
-
         $this->validate($rules);
-
-        $usuario = $this->usuario_id ? User::find($this->usuario_id) : null;
 
         $computador = Computador::create([
                 'tombamento' => $this->tombamento,
                 'ip' => $this->ip,
                 'nome_maquina' => $this->nome_maquina,
                 'lotacao' => $this->lotacao,
-                'operador' => $usuario ? $usuario->nome : null,
+                'operador' => $this->usuario_id ?: '',
                 'usuario_id' => $this->usuario_id,
                 'processador' => $this->processador,
                 'placa_mae' => $this->placa_mae,
