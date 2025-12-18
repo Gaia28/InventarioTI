@@ -42,7 +42,7 @@
                     <tr>
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ $computador->nome_maquina }}</td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ $computador->ip }}</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ $computador->operador }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ $computador->usuario->name ?? 'N/A' }}</td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ $computador->lotacao ?? 'N/A' }}</td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ $computador->sistema_operacional }}
                             / {{ $computador->processador }}</td>
