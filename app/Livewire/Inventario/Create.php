@@ -66,6 +66,23 @@ class Create extends Component
     public function save(){
         $rules = [
             'tombamento' => 'required|unique:computadores,tombamento',
+            'ip' => 'required|unique:computadores,ip|max:15|min:7',
+            'nome_maquina' => 'required|unique:computadores,nome_maquina|max:25|min:6',
+            'lotacao' => 'required|max:100',
+            'usuario_id' => 'nullable|exists:users,id',
+            'processador' => 'required|max:100',
+            'placa_mae' => 'nullable|max:100',
+            'tamanho_disco' => 'required|max:50',
+            'memoria_ram' => 'required|max:50',
+            'tipo_memoria' => 'required|max:50',
+            'sistema_operacional' => 'required|max:100',
+            'licenca_so' => 'required|max:100',
+            'teclado' => 'required|max:100',
+            'mouse' => 'required|max:100',
+            'estabilizador' => 'required|max:100',
+            'carrinho' => 'nullable|max:100',
+            'observacoes' => 'nullable|max:500',
+
         ];
 
         $this->validate($rules);
