@@ -18,13 +18,16 @@
                 {{-- IP --}}
                 <div>
                     <label for="ip" class="block text-sm font-medium text-gray-700">Endereço IP*</label>
-                    <input type="text" id="ip" wire:model="ip"
+                    <input type="text" id="ip" x-mask="99.99.9.999" 
+                        placeholder="10.52.0.0" wire:model="ip"
                         class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-indigo-500 focus:border-indigo-500">
+                            <div>@error('ip') {{ $message }} @enderror</div>
                 </div>
                 {{-- Nome da Máquina --}}
                 <div>
                     <label for="nome_maquina" class="block text-sm font-medium text-gray-700">Nome da Máquina *</label>
-                    <input type="text" id="nome_maquina" wire:model="nome_maquina"
+                    <input type="text" id="nome_maquina" value="PGM" x-mask="PGM999"
+                         placeholder="PGM000" wire:model="nome_maquina"
                         class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-indigo-500 focus:border-indigo-500">
                 </div>
                 <div>
