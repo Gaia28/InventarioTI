@@ -13,7 +13,7 @@
         {{-- BOTÃO DE NOVO CADASTRO (INATIVO) --}}
         <a href="{{ route('inventario.create') }}"
             class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-lg shadow-md transition duration-150 cursor-pointer"
-            title="Novo Cadastro - Link Inativo">
+        >
             + Novo Computador
         </a>
     </div>
