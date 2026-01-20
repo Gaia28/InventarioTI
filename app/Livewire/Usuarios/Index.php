@@ -5,10 +5,13 @@ namespace App\Livewire\Usuarios;
 use Livewire\Attributes\Layout;
 use App\Models\User;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 #[Layout('layouts.app')]
 class Index extends Component
 {
+    use WithPagination;
+
     public string $search = '';
 
     public function getUsuariosProperty()
@@ -18,8 +21,7 @@ class Index extends Component
                 $q->where('name', 'like', '%' . $this->search . '%')
                   ->orWhere('email', 'like', '%' . $this->search . '%');
             })
-            ->orderBy('name')
-            ->get();
+            ->orderBy('name')->paginate(5);
     }
     public function render()
     {

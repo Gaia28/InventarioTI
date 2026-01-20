@@ -51,13 +51,10 @@
 
     {{-- PAGINAÇÃO (ESTÁTICA) --}}
     <div class="mt-4 flex justify-between items-center">
-        <div class="text-sm text-gray-600">Exibindo {{ count($usuarios) }}</div>
 
-        <div class="flex space-x-1">
-            <a href="#" class="px-3 py-1 text-sm text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100">Anterior</a>
-            <a href="#" class="px-3 py-1 text-sm text-white bg-indigo-600 border border-indigo-600 rounded-lg">1</a>
-            <a href="#" class="px-3 py-1 text-sm text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100">2</a>
-            <a href="#" class="px-3 py-1 text-sm text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100">Próxima</a>
-        </div>
+                {{ $usuarios->links('vendor/livewire/paginate') }}
+       
+        
+        
     </div>
 </div>
